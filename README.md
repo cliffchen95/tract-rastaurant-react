@@ -11,6 +11,6 @@
 ![alt login register form](public/login-register.jpg)
 ![alt browse restaurant](public/browsing.jpg)
 ![alt friend page](public/friendlikes.jpg)
-![alt your own list](public/list of liked restaurant.jpg)
+![alt your own list](public/list_of_liked_restaurant.jpg)
 ![alt setting](public/Setting.jpg)
 ![alt chatbox](public/chatbox.jpg)
