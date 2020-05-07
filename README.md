@@ -14,3 +14,14 @@
 ![alt your own list](public/list_of_liked_restaurant.jpg)
 ![alt setting](public/Setting.jpg)
 ![alt chatbox](public/chatbox.jpg)
+
+## Technologies:
+- react(frontend), flask(backend), zomato api, google map api, 
+- strech: sockit io, react-notification-system 
+
+## Milestones:
+- build routes for backend flask server
+- build react component that uses backend data
+- improve visual
+- implement chat 
+- implement notifcation
