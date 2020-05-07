@@ -1,4 +1,5 @@
 # track-restaurant-react
+The main purpose of this app is for the users to quickly browse through many restaurants and store information for the ones they are interested in. And the users will be able to see/check out other users' list of restaurant and see mutual interested restaurants.
 
 ## user story:
 1. user can register and log in to use the app, add other users as friend or remove them as friend.
@@ -16,8 +17,8 @@
 ![alt chatbox](public/chatbox.jpg)
 
 ## Technologies:
-- react(frontend), flask(backend), zomato api, google map api, 
-- strech: sockit io, react-notification-system 
+- react(frontend), flask(backend), zomato api, google map api
+- strech: sockit io, react-notification-system, mobile friendly
 
 ## Milestones:
 - build routes for backend flask server
