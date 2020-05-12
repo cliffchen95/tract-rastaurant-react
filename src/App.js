@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Title from './Title';
 import LoginRegisterForm from './LoginRegisterForm';
+import { Grid } from 'semantic-ui-react';
 
 class App extends Component {
   constructor() {
@@ -14,11 +15,12 @@ class App extends Component {
     const information = (
       <div>this is some information of the app</div>
     )
+    console.log(process.env.REACT_APP_ZOMATO_API_KEY)
     return (
       <div className="App">
-        <Title/>
+        <Title />
+        <LoginRegisterForm />
         {information}
-        <LoginRegisterForm/>
       </div>
     );
   }
