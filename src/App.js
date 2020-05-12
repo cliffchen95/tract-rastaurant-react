@@ -8,7 +8,8 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      loggedIn: false
+      loggedIn: false,
+      user: null
     }
   }
 
@@ -29,15 +30,61 @@ class App extends Component {
       console.log(err)
     }
   }
+
+  logout = async () => {
+    try {
+      const url = process.env.REACT_APP_API_URL + "api/v1/users/logout"
+      const res = await fetch(url, {
+        credentials: 'include',
+        method: 'GET'
+      })
+      const json = await res.json();
+      this.setState({
+        loggedIn: false,
+        user: null
+      })
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  login = async (info) => {
+    const url = process.env.REACT_APP_API_URL + "api/v1/users/login"
+    try {
+      const res = await fetch(url, {
+        credentials: 'include',
+        method: 'POST',
+        body: JSON.stringify(info),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      const json = await res.json();
+      if (json.status === 200) {
+        this.setState({
+          loggedIn: true,
+          user: json.data.username,
+        });
+      }
+      return json;
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
   render() {
+    console.log(this.state)
     const information = (
       <div>this is some information of the app</div>
     )
-    console.log(process.env.REACT_APP_ZOMATO_API_KEY)
     return (
       <div className="App">
         <Title />
-        <LoginRegisterForm register={this.register}/>
+        <LoginRegisterForm 
+          register={this.register}
+          login={this.login}
+          logout={this.logout}
+        />
         {information}
       </div>
     );
