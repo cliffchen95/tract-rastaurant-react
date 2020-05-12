@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Button, Header } from 'semantic-ui-react';
+import { Form, Button, Header, Message } from 'semantic-ui-react';
 import SearchCity from './SearchCity';
 
 export default class LoginRegisterForm extends Component {
@@ -11,7 +11,9 @@ export default class LoginRegisterForm extends Component {
       password: "",
       checkpassword: "",
       city: "",
-      email: ""
+      email: "",
+      message: "",
+      warning: false
     }
   }
   onChange = (e) => {
@@ -19,6 +21,32 @@ export default class LoginRegisterForm extends Component {
   }
   changeCity = (city) => {
     this.setState({ city: city })
+  }
+  onRegister = async (e) => {
+    e.preventDefault();
+    try {
+      if (this.state.checkpassword !== this.state.password) {
+        this.setState({ 
+          message: "your password does not match!", 
+          warning: true
+        })
+        throw new Error("your password does not match!")
+      } else {
+        const result = await this.props.register({
+          username: this.state.username,
+          password: this.state.password,
+          email: this.state.email,
+          city: this.state.city
+        })
+        if (result.status !== 201) {
+          this.setState({ message: result.message, warning: true })
+          throw new Error(result.message)
+        }
+      }
+    } catch (err) {
+        console.error(err)
+    }
+    
   }
   render() {
     const LoginForm = (
@@ -46,7 +74,7 @@ export default class LoginRegisterForm extends Component {
       </Form>
     )
     const RegisterForm = (
-      <Form>
+      <Form onSubmit={this.onRegister}>
         <Header size='medium' textAlign='center'>Register</Header>
         <Form.Field>
           <label>Username</label>
@@ -66,7 +94,7 @@ export default class LoginRegisterForm extends Component {
           />
         </Form.Field>
         <Form.Field>
-          <label>Password</label>
+          <label>Enter Password</label>
           <input 
             placeholder='Password' 
             type="password"
@@ -75,7 +103,7 @@ export default class LoginRegisterForm extends Component {
           />
         </Form.Field>
         <Form.Field>
-          <label>Password</label>
+          <label>Re-Enter Password</label>
           <input 
             placeholder='Password' 
             type="password"
@@ -84,17 +112,22 @@ export default class LoginRegisterForm extends Component {
           />
         </Form.Field>
         <Form.Field>
-          <label>City</label>
+          <label>Enter City</label>
           <SearchCity changeCity={this.changeCity}/>
         </Form.Field>
         <Button type='submit' icon='signup' content='Register'/>
-        <p>Does not have an account? <a>Register!</a></p>
+        <p>Already has an account? <a>Log in!</a></p>
       </Form>
     )
-    console.log(this.state)
+    const message = (
+      <Message warning>
+        <Message.Header>{this.state.message}</Message.Header>
+      </Message>
+    )
     return(
       <div className="login-register-form">
         {RegisterForm}
+        {this.state.warning && message}
       </div>
     );
   }
