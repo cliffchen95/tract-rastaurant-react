@@ -1,0 +1,16 @@
+/*******************************
+     User Global Variables
+*******************************/
+@emSize: 13px;
+@fontSize : 13px;
+@primaryColor: #002f4e;
+@pageBackground: #bb3b0e;
+@h1: 2.25em;
+@defaultBorderRadius: 0.2307em;
+
+
+/* Borders */
+@borderColor: rgba(0, 0, 0, 0.13);
+@solidBorderColor: #DDDDDD;
+@internalBorderColor: rgba(0, 0, 0, 0.06);
+@selectedBorderColor: #51A7E8;
