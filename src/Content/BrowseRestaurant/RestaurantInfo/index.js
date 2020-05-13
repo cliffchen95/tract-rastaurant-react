@@ -36,6 +36,30 @@ export default class RestaurantInfo extends Component {
     }
     this.props.viewNext();
   }
+  onDislike = async() => {
+    try {
+      const url = process.env.REACT_APP_API_URL + "api/v1/restaurants/"
+      const restaurant = this.props.restaurant
+      const address = restaurant.address.address + ", " + restaurant.address.city
+      const res = await fetch(url, {
+        credentials: 'include',
+        method: 'POST',
+        body: JSON.stringify({
+          id: restaurant.id,
+        }),
+        headers: {
+          'Content-Type': 'application/json',
+          'like': 'false'
+        }
+      })
+      const json = await res.json();
+      console.log(json)
+    } catch (err) {
+      console.error(err);
+    }
+    this.props.viewNext();
+  }
+
   render() {
     const restaurant = this.props.restaurant;
     const address = restaurant.address.address + ", " + restaurant.address.city
@@ -55,7 +79,7 @@ export default class RestaurantInfo extends Component {
           <h4>{restaurant.cuisines}</h4>
           <a href={restaurant.url} target="_blank">link</a>
           <Button content="like" onClick={this.onLike} />
-          <Button content="dislike" />
+          <Button content="dislike" onClick={this.onDislike} />
         </Grid.Column>
         <Grid.Column width={4}>
           <h4>Highlights:</h4>
