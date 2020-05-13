@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Title from '../Title'
 import { Grid, Menu, Segment } from 'semantic-ui-react'
 import BrowseRestaurant from './BrowseRestaurant';
+import LikedRestaurants from './LikedRestaurants';
 
 export default class MenuExampleTabularOnLeft extends Component {
   state = { activeItem: 'browse' }
@@ -21,8 +22,8 @@ export default class MenuExampleTabularOnLeft extends Component {
               onClick={this.handleItemClick}
             />
             <Menu.Item
-              name='pics'
-              active={activeItem === 'pics'}
+              name='saved'
+              active={activeItem === 'saved'}
               onClick={this.handleItemClick}
             />
             <Menu.Item
@@ -42,9 +43,16 @@ export default class MenuExampleTabularOnLeft extends Component {
           <Segment>
             <Title />
             {
-              this.state.activeItem == "browse" 
+              activeItem == "browse" 
               && 
               <BrowseRestaurant 
+                user={this.props.user}
+              />
+            }
+            {
+              activeItem == "saved" 
+              && 
+              <LikedRestaurants 
                 user={this.props.user}
               />
             }
