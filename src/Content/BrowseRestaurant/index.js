@@ -12,14 +12,22 @@ export default class BrowseRestaurant extends Component {
       index: 0
     }
   }
-  viewNext = () => {
+  viewNext = async () => {
     const count = this.state.count + 1;
     const index = count % 20;
+    if (index === 0) {
+      const query = `?entity_id=${this.props.user.city}&entity_type=city&start=${count}`;
+      await this.fetchData(query);
+    }
     this.setState({ count, index })
   }
   async componentDidMount() {
+    const query = `?entity_id=${this.props.user.city}&entity_type=city`;
+    this.fetchData(query);
+  }
+
+  async fetchData(query) {
     try {
-      const query = `?entity_id=${this.props.user.city}&entity_type=city`;
       const url = "https://developers.zomato.com/api/v2.1/search" + query;
       const res = await fetch(url, {
         headers: {
@@ -47,7 +55,6 @@ export default class BrowseRestaurant extends Component {
       console.log(err)
     }
   }
-
   render() {
     return(
       <div>
