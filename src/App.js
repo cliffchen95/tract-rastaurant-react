@@ -80,7 +80,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state)
     const information = (
       <div>this is some information of the app</div>
     )

@@ -35,7 +35,6 @@ export default class BrowseRestaurant extends Component {
         }
       })
       const json = await res.json();
-      console.log(json);
       const results = json.restaurants.map(({restaurant}) => {
         return {
           name: restaurant.name,
@@ -58,20 +57,20 @@ export default class BrowseRestaurant extends Component {
   render() {
     return(
       <div>
+        <Segment>
         {
           this.state.loading 
           ?
-          <Segment>
             <Dimmer active>
               <Loader>Loading</Loader>
             </Dimmer>
-          </Segment>
           :
           <RestaurantInfo 
             restaurant={this.state.restaruantList[this.state.index]}
             viewNext={this.viewNext}
           />
         }
+        </Segment>
       </div>
     )
   }

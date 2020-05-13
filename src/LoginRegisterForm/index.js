@@ -69,7 +69,6 @@ export default class LoginRegisterForm extends Component {
         username: this.state.username,
         password: this.state.password
       })
-      console.log(result)
       if (result.status !== 200) {
         this.setState({ warning: true, message: result.message })
         throw new Error(result.message)

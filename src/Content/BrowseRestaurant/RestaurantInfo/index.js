@@ -31,7 +31,6 @@ export default class RestaurantInfo extends Component {
         }
       })
       const json = await res.json();
-      console.log(json)
     } catch (err) {
       console.error(err);
     }
