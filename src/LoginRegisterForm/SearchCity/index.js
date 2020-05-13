@@ -34,7 +34,7 @@ export default class SearchCity extends Component {
       });
       const json = await res.json();
       const results = json.location_suggestions.map((city) => {
-        return { key: city.id, text: city.name, value: city.name }
+        return { key: city.id, text: city.name, value: city.id }
       })
       this.setState({ results, loading: false })
     } catch (err) {

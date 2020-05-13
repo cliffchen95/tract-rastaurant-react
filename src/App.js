@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Title from './Title';
 import LoginRegisterForm from './LoginRegisterForm';
+import Content from './Content'
 import { Grid } from 'semantic-ui-react';
 
 class App extends Component {
@@ -25,6 +26,12 @@ class App extends Component {
         }
       });
       const json = await res.json()
+      if (json.status === 201) {
+        this.setState({
+          loggedIn: true,
+          user: json.data,
+        });
+      }
       return json
     } catch (err) {
       console.log(err)
@@ -63,7 +70,7 @@ class App extends Component {
       if (json.status === 200) {
         this.setState({
           loggedIn: true,
-          user: json.data.username,
+          user: json.data,
         });
       }
       return json;
@@ -79,13 +86,22 @@ class App extends Component {
     )
     return (
       <div className="App">
-        <Title />
-        <LoginRegisterForm 
-          register={this.register}
-          login={this.login}
-          logout={this.logout}
-        />
-        {information}
+        {
+          this.state.loggedIn 
+          ? 
+          <Content user={this.state.user}/>
+          : 
+          <React.Fragment>
+            <Title />
+            <LoginRegisterForm 
+            register={this.register}
+            login={this.login}
+            logout={this.logout}
+            />
+            {information}
+          </React.Fragment>
+        }
+        
       </div>
     );
   }
