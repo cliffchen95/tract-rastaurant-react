@@ -8,6 +8,7 @@ export default function RestaurantCard(props) {
       <Image src={restaurant.picture} wrapped ui={false} />
       <Card.Content>
         <Card.Header>{restaurant.name}</Card.Header>
+        <Card.Meta>{restaurant.cuisine}</Card.Meta>
         <Card.Description>
           {restaurant.address}
         </Card.Description>

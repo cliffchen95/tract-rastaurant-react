@@ -23,7 +23,8 @@ export default class RestaurantInfo extends Component {
           address: address,
           picture: restaurant.image,
           url: restaurant.url,
-          name: restaurant.name
+          name: restaurant.name,
+          cuisine: restaurant.cuisines
         }),
         headers: {
           'Content-Type': 'application/json',
