@@ -69,7 +69,7 @@ export default class LikedRestaurants extends Component {
         {
           this.state.loading 
           ?
-            <Segment>
+            <Segment style={{minHeight: "80vh"}}>
               <Dimmer active>
                 <Loader>Loading</Loader>
               </Dimmer>

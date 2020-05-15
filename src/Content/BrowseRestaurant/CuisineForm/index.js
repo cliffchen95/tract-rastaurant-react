@@ -41,8 +41,11 @@ export default class CuisineForm extends Component {
       }
     });
     const { value } = this.state;
+    const style = {
+      paddingLeft: "20px"
+    }
     return(
-      <React.Fragment>
+      <div style={style}>
         <Dropdown
           search
           selection 
@@ -53,7 +56,7 @@ export default class CuisineForm extends Component {
           onChange={this.onChange}
         />
         <Button onClick={this.props.apply} content="Apply" />
-      </React.Fragment>
+      </div>
     )
   }
 }

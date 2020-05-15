@@ -72,6 +72,7 @@ export default class RestaurantInfo extends Component {
         })}
       </List>
     )
+    const imageUrl = restaurant.image == "" ? "https://homestaymatch.com/images/no-image-available.png" : restaurant.image;
     const style ={
       maxHeight: "60%"
     }
@@ -80,7 +81,7 @@ export default class RestaurantInfo extends Component {
         <Grid.Row divided >
           <Grid.Column width={11}>
           <Segment>
-            <Image src={restaurant.image} style={style} wrapped/>
+            <Image src={imageUrl} style={style} wrapped/>
             <h3>{restaurant.name}</h3>
             <h4>{restaurant.cuisines}</h4>
             <a href={restaurant.url} target="_blank">zomato link</a>
