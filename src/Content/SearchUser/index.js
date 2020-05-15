@@ -42,7 +42,19 @@ export default class SearchUser extends Component {
       });
     }
   }
-
+  sendRequest = async (id) => {
+    try {
+      const url = process.env.REACT_APP_API_URL + 'api/v1/users/send/' + id;
+      const res = await fetch(url, {
+        credentials: 'include',
+        method: 'POST'
+      });
+      const json = await res.json();
+      console.log(json)
+    } catch (err) {
+      console.log(err)
+    }
+  }
   fetchSearchResult = async (query) => {
     try {
       const url = process.env.REACT_APP_API_URL + "api/v1/users/search?query=" + query;
@@ -74,7 +86,7 @@ export default class SearchUser extends Component {
               ?
               <Button content="Pending" active={false} floated='right'/>
               :
-              <Button content="Add Friend" floated="right"/>
+              <Button content="Add Friend" floated="right" onClick={ () => this.sendRequest(result.id) }/>
             }
           </List.Content>
         </List.Item>
