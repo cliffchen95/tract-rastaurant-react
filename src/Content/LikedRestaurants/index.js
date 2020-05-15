@@ -63,7 +63,7 @@ export default class LikedRestaurants extends Component {
             </Segment>
           :
           <React.Fragment>
-          {result}
+            {result}
           </React.Fragment>
         }
         </React.Fragment>
