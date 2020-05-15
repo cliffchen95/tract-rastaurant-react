@@ -35,6 +35,12 @@ export default class LikedRestaurants extends Component {
       console.error(err)
     }
   }
+  removeLiked = (id) => {
+    const { likedRestaurants } = this.state;
+    const index = likedRestaurants.findIndex( restaurant => restaurant.id == id )
+    likedRestaurants.splice(index, 1);
+    this.setState({ likedRestaurants })
+  }
   render() {
     console.log(this.state)
     const { cities, likedRestaurants } = this.state
@@ -46,6 +52,7 @@ export default class LikedRestaurants extends Component {
             return restaurant.city == city
             })
           }
+          removeLiked={this.removeLiked}
           key={key}
         />
       )

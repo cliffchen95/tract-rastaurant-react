@@ -14,6 +14,7 @@ export default class RestaurantCardGroup extends Component {
   }
   onRemove = async (id) => {
     try {
+      this.props.removeLiked(id);
       const url = process.env.REACT_APP_API_URL + 'api/v1/restaurants/' + id;
       const res = await fetch(url, {
         credentials: 'include',
