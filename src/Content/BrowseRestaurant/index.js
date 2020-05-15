@@ -110,7 +110,7 @@ export default class BrowseRestaurant extends Component {
       />
     })
     const style = {
-      minHeight: "50vh"
+      minHeight: "80vh"
     }
     return(
       <div>
@@ -123,14 +123,16 @@ export default class BrowseRestaurant extends Component {
             </Dimmer>
           :
           <Grid >
-            <CuisineForm 
-              addCuisine={this.addCuisine}
-              cuisines={this.state.cuisines}
-              apply={this.applySetting}
-            />
             <Grid.Row>
-              <Grid.Column>
-                {selected}
+              <CuisineForm 
+                addCuisine={this.addCuisine}
+                cuisines={this.state.cuisines}
+                apply={this.applySetting}
+              />
+              <Grid.Column stretched>
+                <Button.Group>
+                  {selected}
+                </Button.Group>
               </Grid.Column>
             </Grid.Row>
             <Grid.Row>

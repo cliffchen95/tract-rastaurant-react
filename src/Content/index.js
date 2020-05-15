@@ -13,9 +13,11 @@ export default class MenuExampleTabularOnLeft extends Component {
 
   render() {
     const { activeItem } = this.state
-
+    const style = {
+      minHeight: "100vh"
+    }
     return (
-      <Grid>
+      <Grid style={style}>
         <Grid.Column width={4} stretched>
           <Menu fluid vertical tabular>
             <Menu.Item
