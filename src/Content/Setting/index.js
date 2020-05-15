@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import SearchCity from './SearchCity';
-import { Form, Button } from 'semantic-ui-react';
+import { Form, Button, Message } from 'semantic-ui-react';
 
 export default class Setting extends Component {
   constructor(props) {
@@ -26,14 +26,13 @@ export default class Setting extends Component {
         }
       });
       const json = await res.json();
-      this.props.updateUser(this.state.city)
+      this.props.updateUser(this.state.city);
+      this.setState({message: "Your preference has been updated"})
     } catch (err) {
       console.error(err)
     }
   }
   render() {
-    console.log("this is in setting")
-    console.log(this.state)
     return(
       <div>
         <Form onSubmit={this.onSubmit}>
@@ -43,6 +42,11 @@ export default class Setting extends Component {
           </Form.Field>
           <Button type='submit' content='Save' />
         </Form>
+        {
+          this.state.message 
+          && 
+          <Message content={this.state.message} />
+        }
       </div>
     )
   }

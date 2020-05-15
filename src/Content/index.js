@@ -4,6 +4,7 @@ import { Grid, Menu, Segment } from 'semantic-ui-react'
 import BrowseRestaurant from './BrowseRestaurant';
 import LikedRestaurants from './LikedRestaurants';
 import Setting from './Setting';
+import SearchUser from './SearchUser';
 
 export default class MenuExampleTabularOnLeft extends Component {
   state = { activeItem: 'browse' }
@@ -28,8 +29,8 @@ export default class MenuExampleTabularOnLeft extends Component {
               onClick={this.handleItemClick}
             />
             <Menu.Item
-              name='companies'
-              active={activeItem === 'companies'}
+              name='search user'
+              active={activeItem === 'search user'}
               onClick={this.handleItemClick}
             />
             <Menu.Item
@@ -63,6 +64,13 @@ export default class MenuExampleTabularOnLeft extends Component {
               <Setting 
                 user={this.props.user}
                 updateUser={this.props.updateUser}
+              />
+            }
+            {
+              activeItem == "search user" 
+              && 
+              <SearchUser 
+                user={this.props.user}
               />
             }
           </Segment>

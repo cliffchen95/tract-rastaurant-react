@@ -87,7 +87,6 @@ class App extends Component {
     const information = (
       <div>this is some information of the app</div>
     )
-    console.log(this.state)
     return (
       <div className="App">
         {
