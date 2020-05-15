@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Image, Button, List } from 'semantic-ui-react';
+import { Grid, Image, Button, List, Segment } from 'semantic-ui-react';
 
 
 export default class RestaurantInfo extends Component {
@@ -21,6 +21,7 @@ export default class RestaurantInfo extends Component {
         body: JSON.stringify({
           id: restaurant.id,
           address: address,
+          city: restaurant.address.city,
           picture: restaurant.image,
           url: restaurant.url,
           name: restaurant.name,
@@ -71,21 +72,42 @@ export default class RestaurantInfo extends Component {
         })}
       </List>
     )
+    const style ={
+      maxHeight: "60%"
+    }
     return(
-      <Grid columns={2} divided>
-        <Grid.Column width={8}>
-          <Image src={restaurant.image} />
-          <h3>{restaurant.name}</h3>
-          <h4>{restaurant.cuisines}</h4>
-          <a href={restaurant.url} target="_blank">link</a>
-          <Button content="like" onClick={this.onLike} />
-          <Button content="dislike" onClick={this.onDislike} />
-        </Grid.Column>
-        <Grid.Column width={4}>
-          <h4>Highlights:</h4>
-          {highlights}
-          <h4>{address}</h4>
-        </Grid.Column>
+      <Grid columns='2' centered>
+        <Grid.Row divided >
+          <Grid.Column width={11}>
+          <Segment>
+            <Image src={restaurant.image} style={style} wrapped/>
+            <h3>{restaurant.name}</h3>
+            <h4>{restaurant.cuisines}</h4>
+            <a href={restaurant.url} target="_blank">zomato link</a>
+            <Button.Group fluid>
+              <Button 
+                icon="heart" 
+                onClick={this.onLike} 
+                primary
+                content="like"
+              />
+              <Button 
+                icon="close" 
+                onClick={this.onDislike} 
+                secondary
+                content="dislike"
+              />
+            </Button.Group>
+            </Segment>
+          </Grid.Column>
+          <Grid.Column width={5}>
+          <Segment>
+            <h4>Highlights:</h4>
+            {highlights}
+            <h4>{address}</h4>
+            </Segment>
+          </Grid.Column>
+        </Grid.Row>
       </Grid>
     )
   }

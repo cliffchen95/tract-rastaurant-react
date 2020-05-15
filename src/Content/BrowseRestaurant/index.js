@@ -109,9 +109,12 @@ export default class BrowseRestaurant extends Component {
         onClick={ () => this.removeCuisine(key) }
       />
     })
+    const style = {
+      minHeight: "50vh"
+    }
     return(
       <div>
-        <Segment>
+        <Segment style={style}>
         {
           this.state.loading 
           ?
@@ -119,7 +122,7 @@ export default class BrowseRestaurant extends Component {
               <Loader>Loading</Loader>
             </Dimmer>
           :
-          <Grid>
+          <Grid >
             <CuisineForm 
               addCuisine={this.addCuisine}
               cuisines={this.state.cuisines}

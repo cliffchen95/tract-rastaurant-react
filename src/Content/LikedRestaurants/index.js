@@ -7,7 +7,8 @@ export default class LikedRestaurants extends Component {
     super();
     this.state = {
       loading: true,
-      LikedRestaurants: []
+      likedRestaurants: [],
+      cities: []
     }
   }
   async componentDidMount() {
@@ -18,9 +19,17 @@ export default class LikedRestaurants extends Component {
         credentials: 'include'
       })
       const json = await res.json();
+      const cities = this.state.cities;
+      const likedRestaurants =json.data.like_restaurants;
+      for (let restaurant of likedRestaurants) {
+        if (!cities.includes(restaurant.city)) {
+          cities.push(restaurant.city)
+        }
+      }
       this.setState({
         loading: false,
-        LikedRestaurants: json.data.like_restaurants
+        likedRestaurants,
+        cities
       })
     } catch (err) {
       console.error(err)
@@ -28,19 +37,36 @@ export default class LikedRestaurants extends Component {
   }
   render() {
     console.log(this.state)
+    const { cities, likedRestaurants } = this.state
+    const result = cities.map((city, key) => {
+      return (
+        <RestaurantCardGroup 
+          city={city} 
+          restaurants={likedRestaurants.filter((restaurant) => {
+            return restaurant.city == city
+            })
+          }
+          key={key}
+        />
+      )
+    })
     return(
       <div>
-        <Segment>
+        <React.Fragment>
         {
           this.state.loading 
           ?
-            <Dimmer active>
-              <Loader>Loading</Loader>
-            </Dimmer>
+            <Segment>
+              <Dimmer active>
+                <Loader>Loading</Loader>
+              </Dimmer>
+            </Segment>
           :
-          <RestaurantCardGroup restaurants={this.state.LikedRestaurants}/>
+          <React.Fragment>
+          {result}
+          </React.Fragment>
         }
-        </Segment>
+        </React.Fragment>
       </div>
     )
   }

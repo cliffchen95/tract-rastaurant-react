@@ -3,7 +3,9 @@
 *******************************/
 @emSize: 13px;
 @fontSize : 13px;
-@primaryColor: #002f4e;
+@primaryColor: #d63447;
+@secondaryColor: #035aa6;
 @pageBackground: #bb3b0e;
 @h1: 2.25em;
+
 
