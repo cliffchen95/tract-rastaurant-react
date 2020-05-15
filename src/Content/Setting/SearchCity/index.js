@@ -46,6 +46,7 @@ export default class SearchCity extends Component {
   }
   render() {
     const { value } = this.state;
+    console.log('this is in search')
     console.log(this.state)
     return(
       <Dropdown

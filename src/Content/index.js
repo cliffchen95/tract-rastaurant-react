@@ -62,6 +62,7 @@ export default class MenuExampleTabularOnLeft extends Component {
               && 
               <Setting 
                 user={this.props.user}
+                updateUser={this.props.updateUser}
               />
             }
           </Segment>

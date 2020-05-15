@@ -1,67 +1,46 @@
 import React, { Component } from 'react';
 import SearchCity from './SearchCity';
-import CuisineForm from './CuisineForm';
 import { Form, Button } from 'semantic-ui-react';
 
 export default class Setting extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      city: props.user.city,
-      cuisines: [],
-      selectedCuisines: []
+      city: props.user.city
     }
   }
-  componentDidMount() {
-    this.fetchCuisine()
+  changeCity = async (city) => {
+    await this.setState({ city })
   }
-  fetchCuisine = async () => {
+  onSubmit = async () => {
     try {
-      const url = `https://developers.zomato.com/api/v2.1/cuisines?city_id=${this.state.city}`
+      const url = process.env.REACT_APP_API_URL + "api/v1/users/update";
       const res = await fetch(url, {
+        credentials: 'include',
+        method: 'PATCH',
+        body: JSON.stringify({
+          city: this.state.city
+        }),
         headers: {
-          'user-key': process.env.REACT_APP_ZOMATO_API_KEY
+          'Content-Type': 'application/json'
         }
-      })
+      });
       const json = await res.json();
-      const cuisines = json.cuisines.map(({ cuisine }) => {
-        return cuisine
-      })
-      this.setState({ cuisines })
+      this.props.updateUser(this.state.city)
     } catch (err) {
       console.error(err)
     }
   }
-  addCuisine = (cuisine) => {
-    const { selectedCuisines } = this.state;
-    selectedCuisines.push(cuisine);
-
-    this.setState({ selectedCuisines });
-  }
-  changeCity = async (city) => {
-    await this.setState({ city, selectedCuisines: [] })
-    this.fetchCuisine();
-  }
   render() {
+    console.log("this is in setting")
     console.log(this.state)
-    const selected = this.state.selectedCuisines.map((cuisine, key) => {
-      return <Button content={cuisine.name} key={key}/>
-    })
     return(
       <div>
-        <Form>
+        <Form onSubmit={this.onSubmit}>
           <Form.Field>
             <label>Change location:</label>
-            <SearchCity changeCity={this.changeCity} />
+            <SearchCity changeCity={this.changeCity} currentCity={this.props.user.city} />
           </Form.Field>
-          <Form.Field>
-            <label>Cuisines:</label>
-            <CuisineForm 
-              cuisines={this.state.cuisines}
-              addCuisine={this.addCuisine}
-            />
-          </Form.Field>
-          {selected}
           <Button type='submit' content='Save' />
         </Form>
       </div>

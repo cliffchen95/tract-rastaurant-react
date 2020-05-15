@@ -78,17 +78,25 @@ class App extends Component {
       console.error(err);
     }
   }
-
+  updateUser = (city) => {
+    const { user } = this.state;
+    user.city = city;
+    this.setState({ user });
+  }
   render() {
     const information = (
       <div>this is some information of the app</div>
     )
+    console.log(this.state)
     return (
       <div className="App">
         {
           this.state.loggedIn 
           ? 
-          <Content user={this.state.user}/>
+          <Content 
+            user={this.state.user}
+            updateUser={this.updateUser}
+          />
           : 
           <React.Fragment>
             <Title />
