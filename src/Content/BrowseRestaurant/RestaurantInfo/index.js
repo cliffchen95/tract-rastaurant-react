@@ -54,7 +54,7 @@ export default class RestaurantInfo extends Component {
         }
       })
       const json = await res.json();
-      console.log(json)
+      
     } catch (err) {
       console.error(err);
     }
@@ -64,7 +64,6 @@ export default class RestaurantInfo extends Component {
   render() {
     const restaurant = this.props.restaurant;
     const address = restaurant.address.address + ", " + restaurant.address.city
-    console.log(restaurant)
     const highlights = (
       <List bulleted>
         {restaurant.highlights.map((highlight, key) => {
