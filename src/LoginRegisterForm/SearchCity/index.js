@@ -27,6 +27,7 @@ export default class SearchCity extends Component {
   fetchSearchResult = async (query) => {
     try {
       const url = "https://developers.zomato.com/api/v2.1/cities?q=" + query;
+      console.log(process.env.REACT_APP_ZOMATO_API_KEY)
       const res = await fetch(url, {
         headers: {
           "user-key": process.env.REACT_APP_ZOMATO_API_KEY
