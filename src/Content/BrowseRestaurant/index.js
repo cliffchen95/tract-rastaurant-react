@@ -51,9 +51,7 @@ export default class BrowseRestaurant extends Component {
       return cuisine.id
     })
     const str = cuisines.join(', ')
-    console.log(str)
     const query = `?entity_id=${this.props.user.city}&entity_type=city&cuisines=` + str;
-    console.log(query)
     try {
       await this.setState({ loading: true, count: 0, index: 0 });
       await this.fetchData(query);
@@ -101,7 +99,6 @@ export default class BrowseRestaurant extends Component {
     }
   }
   render() {
-    console.log(this.state)
     const selected = this.state.selectedCuisines.map((cuisine, key) => {
       return <Button 
         content={cuisine.name} 

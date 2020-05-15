@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Title from '../Title'
-import { Grid, Menu, Segment } from 'semantic-ui-react'
+import { Grid, Menu, Segment, Button } from 'semantic-ui-react'
 import BrowseRestaurant from './BrowseRestaurant';
 import LikedRestaurants from './LikedRestaurants';
 import Setting from './Setting';
@@ -36,10 +36,19 @@ export default class MenuExampleTabularOnLeft extends Component {
               onClick={this.handleItemClick}
             />
             <Menu.Item
+              name='friends'
+              active={activeItem === 'friends'}
+              onClick={this.handleItemClick}
+            />
+            <Menu.Item
               name='setting'
               active={activeItem === 'setting'}
               onClick={this.handleItemClick}
             />
+            <Menu.Item
+              name='log out'
+            />
+
           </Menu>
         </Grid.Column>
 

@@ -48,7 +48,6 @@ export default class LikedRestaurants extends Component {
     this.setState({ likedRestaurants, cities })
   }
   render() {
-    console.log(this.state)
     const { cities, likedRestaurants } = this.state
     const result = cities.map((city, key) => {
       return (

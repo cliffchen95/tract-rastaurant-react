@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Segment, Input, List } from 'semantic-ui-react';
+import { Segment, Input, List, Button } from 'semantic-ui-react';
 
 export default class SearchUser extends Component {
   constructor() {
@@ -41,8 +41,6 @@ export default class SearchUser extends Component {
   }
   render() {
     const { value } = this.state;
-    console.log('this is in search')
-    console.log(this.state)
     const results = this.state.results.map((result, key) => {
       return (
         <List.Item key={key}>
@@ -50,6 +48,7 @@ export default class SearchUser extends Component {
           <List.Content>
             <List.Header>{result.username}</List.Header>
             <List.Description>{result.email}</List.Description>
+            <Button content="Add Friend" floated="right"/>
           </List.Content>
         </List.Item>
       )
@@ -61,6 +60,7 @@ export default class SearchUser extends Component {
           onChange={this.handleChange}
           value={this.state.query}
           loading={this.state.loading}
+          fluid
         />
         <List>{results}</List>
       </Segment>

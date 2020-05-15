@@ -21,7 +21,7 @@ export default class RestaurantCardGroup extends Component {
         method: 'DELETE'
       })
       const json = await res.json();
-      console.log(json)
+      return json;
     } catch (err) {
       console.error(err)
     }
@@ -35,7 +35,6 @@ export default class RestaurantCardGroup extends Component {
         onRemove={this.onRemove} 
       />
     })
-    console.log()
     return(
       <Segment>
         <h3>{this.props.city}</h3>
