@@ -8,10 +8,30 @@ export default class SearchUser extends Component {
       query: "",
       results: [],
       message: "",
-      loading: false
+      loading: false, 
+      requestFromUser: []
     }
   }
-
+  componentDidMount() {
+    this.fetchRequests();
+  }
+  fetchRequests = async () => {
+    try {
+      const url = process.env.REACT_APP_API_URL + 'api/v1/users/requests';
+      const res = await fetch(url, {
+        credentials: 'include'
+      });
+      const json = await res.json();
+      console.log(json)
+      const requestFromUser = json.data.requests_from.map((request) => {
+        return request.user_to.id
+      })
+      console.log(requestFromUser)
+      this.setState({ requestFromUser })
+    } catch (err) {
+      console.error(err)
+    }
+  }
   handleChange = (e) => {
     const query = e.target.value;
     if (!query) {
@@ -41,6 +61,7 @@ export default class SearchUser extends Component {
   }
   render() {
     const { value } = this.state;
+    console.log(this.state)
     const results = this.state.results.map((result, key) => {
       return (
         <List.Item key={key}>
@@ -48,7 +69,13 @@ export default class SearchUser extends Component {
           <List.Content>
             <List.Header>{result.username}</List.Header>
             <List.Description>{result.email}</List.Description>
-            <Button content="Add Friend" floated="right"/>
+            { 
+              this.state.requestFromUser.includes(result.id)
+              ?
+              <Button content="Pending" active={false} floated='right'/>
+              :
+              <Button content="Add Friend" floated="right"/>
+            }
           </List.Content>
         </List.Item>
       )
