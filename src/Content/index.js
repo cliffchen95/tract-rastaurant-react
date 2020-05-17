@@ -5,6 +5,7 @@ import BrowseRestaurant from './BrowseRestaurant';
 import LikedRestaurants from './LikedRestaurants';
 import Setting from './Setting';
 import SearchUser from './SearchUser';
+import FriendContainer from './FriendContainer';
 
 export default class MenuExampleTabularOnLeft extends Component {
   state = { activeItem: 'browse' }
@@ -83,6 +84,11 @@ export default class MenuExampleTabularOnLeft extends Component {
               <SearchUser 
                 user={this.props.user}
               />
+            }
+            {
+              activeItem == 'friends'
+              &&
+              <FriendContainer />
             }
           </Segment>
         </Grid.Column>
