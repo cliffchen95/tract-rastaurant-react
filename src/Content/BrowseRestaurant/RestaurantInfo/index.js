@@ -80,7 +80,7 @@ export default class RestaurantInfo extends Component {
       <Grid columns='2' centered>
         <Grid.Row divided >
           <Grid.Column width={11}>
-          <Segment>
+          <Segment >
             <Image src={imageUrl} style={style} wrapped/>
             <h3>{restaurant.name}</h3>
             <h4>{restaurant.cuisines}</h4>

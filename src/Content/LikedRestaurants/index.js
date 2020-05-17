@@ -38,16 +38,20 @@ export default class LikedRestaurants extends Component {
   removeLiked = (id) => {
     const { likedRestaurants } = this.state;
     const index = likedRestaurants.findIndex( restaurant => restaurant.id == id )
+    console.log(index)
     likedRestaurants.splice(index, 1);
+    console.log(likedRestaurants)
     const cities = []
     for (let restaurant of likedRestaurants) {
       if (!cities.includes(restaurant.city)) {
         cities.push(restaurant.city)
       }
     }
+    console.log('this is called')
     this.setState({ likedRestaurants, cities })
   }
   render() {
+    console.log(this.state)
     const { cities, likedRestaurants } = this.state
     const result = cities.map((city, key) => {
       return (

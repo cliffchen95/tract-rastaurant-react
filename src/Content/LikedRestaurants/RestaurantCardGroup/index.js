@@ -7,9 +7,7 @@ export default class RestaurantCardGroup extends Component {
     super(props);
     this.state = {
       editToggle: false,
-      showMore: false,
-      moreThanSix: props.restaurants.length > 5,
-      restaurants: props.restaurants
+      showMore: false
     }
   }
   toggleEdit = () => {
@@ -33,7 +31,8 @@ export default class RestaurantCardGroup extends Component {
     this.setState({ showMore: !this.state.showMore})
   }
   render() {
-    const restaurants = (this.state.moreThanSix && !this.state.showMore) ? this.state.restaurants.slice(0, 6) : this.state.restaurants;
+    const moreThanSix = this.props.restaurants.length > 6;
+    const restaurants = (moreThanSix && !this.state.showMore) ? this.props.restaurants.slice(0, 6) : this.props.restaurants;
 
     const cardItems = restaurants.map((restaurant, key) => {
       return <RestaurantCard 
@@ -46,11 +45,11 @@ export default class RestaurantCardGroup extends Component {
     return(
       <Segment>
         <h3>{this.props.city}</h3>
-        <Button content="Toggle Edit" onClick={this.toggleEdit} />
+        <Button content="Toggle Edit" onClick={this.toggleEdit} color='purple'/>
         <Card.Group itemsPerRow={3}>
           {cardItems}
         </Card.Group>
-        { (!this.state.showMore && this.state.moreThanSix) && <a onClick={this.toggleShow}>...more</a> }
+        { (!this.state.showMore && moreThanSix) && <a onClick={this.toggleShow}>...more</a> }
         { this.state.showMore && <a onClick={this.toggleShow}>show less</a> }
       </Segment>
     )

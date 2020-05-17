@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Header } from 'semantic-ui-react';
+
 
 export default class Title extends Component {
   constructor() {
@@ -8,9 +8,9 @@ export default class Title extends Component {
 
   render() {
     return(
-      <Header as='h1' textAlign='center'>
-        <Header.Content>Title</Header.Content>
-      </Header>
+      <div style={{paddingTop: '10px'}}>
+        <h1 className="title">RestaurantFinder</h1>
+      </div>
     );
   }
 }

@@ -55,7 +55,7 @@ export default class CuisineForm extends Component {
           value={value}
           onChange={this.onChange}
         />
-        <Button onClick={this.props.apply} content="Apply" />
+        <Button onClick={this.props.apply} content="Apply" color='purple'/>
       </div>
     )
   }

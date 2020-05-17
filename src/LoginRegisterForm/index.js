@@ -79,8 +79,7 @@ export default class LoginRegisterForm extends Component {
   }
   render() {
     const LoginForm = (
-      <Form onSubmit={this.onLogin}>
-        <Header size='medium'>Log in</Header>
+      <Form onSubmit={this.onLogin} >
         <Form.Field>
           <label>Username</label>
           <input 
@@ -100,13 +99,12 @@ export default class LoginRegisterForm extends Component {
             value={this.state.password}
           />
         </Form.Field>
-        <Button type='submit' icon='sign-in' content='Log in'/>
+        <Button type='submit' icon='sign-in' content='Log in' floated='right' color="blue"/>
         <p>Does not have an account? <a onClick={this.onClick}>Register!</a></p>
       </Form>
     )
     const RegisterForm = (
       <Form onSubmit={this.onRegister}>
-        <Header size='medium'>Register</Header>
         <Form.Field>
           <label>Username</label>
           <input 
@@ -150,7 +148,7 @@ export default class LoginRegisterForm extends Component {
           <label>Enter City</label>
           <SearchCity changeCity={this.changeCity}/>
         </Form.Field>
-        <Button type='submit' icon='signup' content='Register'/>
+        <Button type='submit' icon='signup' content='Register' floated='right' color="green"/>
         <p>Already has an account? <a onClick={this.onClick}>Log in!</a></p>
       </Form>
     )
@@ -160,7 +158,7 @@ export default class LoginRegisterForm extends Component {
       </Message>
     )
     return(
-      <div className="login-register-form">
+      <div className="login-register-form" >
         {this.state.register ? RegisterForm : LoginForm}
         {this.state.warning && message}
       </div>

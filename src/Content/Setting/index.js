@@ -40,7 +40,7 @@ export default class Setting extends Component {
             <label>Change location:</label>
             <SearchCity changeCity={this.changeCity} currentCity={this.props.user.city} />
           </Form.Field>
-          <Button type='submit' content='Save' />
+          <Button type='submit' content='Save' color='purple'/>
         </Form>
         {
           this.state.message 

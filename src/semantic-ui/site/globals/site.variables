@@ -1,11 +1,15 @@
 /*******************************
      User Global Variables
 *******************************/
-@emSize: 13px;
-@fontSize : 13px;
+@emSize: 15px;
+@fontSize : 15px;
 @primaryColor: #d63447;
 @secondaryColor: #035aa6;
 @pageBackground: #bb3b0e;
 @h1: 2.25em;
+
+@green: #708160;
+@blue: #005082;
+@purple: #6e5773;
 
 
