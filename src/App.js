@@ -3,6 +3,7 @@ import './App.css';
 import Title from './Title';
 import LoginRegisterForm from './LoginRegisterForm';
 import Content from './Content'
+import NotificationTab from './NotificationTab';
 import { Grid } from 'semantic-ui-react';
 
 class App extends Component {
@@ -92,10 +93,13 @@ class App extends Component {
         {
           this.state.loggedIn 
           ? 
-          <Content 
-            user={this.state.user}
-            updateUser={this.updateUser}
-          />
+          <React.Fragment>
+            <Content 
+              user={this.state.user}
+              updateUser={this.updateUser}
+            />
+            <NotificationTab />
+          </React.Fragment>
           : 
           <React.Fragment>
             <Title />
