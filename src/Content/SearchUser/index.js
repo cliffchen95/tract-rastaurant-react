@@ -22,12 +22,11 @@ export default class SearchUser extends Component {
         credentials: 'include'
       });
       const json = await res.json();
-      console.log(json)
       const requestFromUser = json.data.requests_from.map((request) => {
         return request.user_to.id
       })
-      console.log(requestFromUser)
       this.setState({ requestFromUser })
+      return json;
     } catch (err) {
       console.error(err)
     }
@@ -50,7 +49,10 @@ export default class SearchUser extends Component {
         method: 'POST'
       });
       const json = await res.json();
-      console.log(json)
+      const { requestFromUser } = this.state;
+      requestFromUser.push(id);
+      await this.setState({ requestFromUser });
+      return json;
     } catch (err) {
       console.log(err)
     }

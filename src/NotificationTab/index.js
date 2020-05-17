@@ -12,8 +12,13 @@ export default class NotificationTab extends Component {
   onClick = (e) => {
     if (e.target == e.currentTarget) {
       this.setState({ open: !this.state.open })
+      this.fetchRequests()
     }
-    this.fetchRequests()
+  }
+  removeRequest = (index) => {
+    const { requestsTo } = this.state;
+    requestsTo.splice(index, 1);
+    this.setState({ requestsTo })
   }
   fetchRequests = async () => {
     try {
@@ -41,7 +46,7 @@ export default class NotificationTab extends Component {
     return (
       <div style={style} onClick={this.onClick} >
         Notification
-        { this.state.open && <NotificationList requests={this.state.requestsTo} />}
+        { this.state.open && <NotificationList requests={this.state.requestsTo} removeRequest={this.removeRequest} />}
       </div>
     )
   }
