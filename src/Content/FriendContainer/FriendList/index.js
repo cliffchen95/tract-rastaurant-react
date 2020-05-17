@@ -68,7 +68,6 @@ export default class FriendList extends Component {
     this.setState({ selectedCity: value })
   }
   render() {
-    console.log(this.state)
     const { mutualRestaurants, allRestaurants, showAll, selectedCity, showMutual } = this.state;
     const mutualIndex = showAll ? mutualRestaurants.length : 6;
     const allIndex = showAll ? allRestaurants.length : 6;

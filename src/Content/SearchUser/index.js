@@ -75,7 +75,6 @@ export default class SearchUser extends Component {
   }
   render() {
     const { value } = this.state;
-    console.log(this.state)
     const results = this.state.results.map((result, key) => {
       return (
         <List.Item key={key}>

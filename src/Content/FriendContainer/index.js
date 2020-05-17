@@ -23,7 +23,6 @@ export default class FriendContainer extends Component {
     this.fetchFriend()
   }
   render() {
-    console.log(this.state)
     const list = this.state.friends.map((friend, key) => {
       return <FriendList friend={friend} key={key} />
     })
