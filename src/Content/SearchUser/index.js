@@ -9,11 +9,13 @@ export default class SearchUser extends Component {
       results: [],
       message: "",
       loading: false, 
-      requestFromUser: []
+      requestFromUser: [],
+      friendList: []
     }
   }
   componentDidMount() {
     this.fetchRequests();
+    this.fetchFriends();
   }
   fetchRequests = async () => {
     try {
@@ -27,6 +29,19 @@ export default class SearchUser extends Component {
       })
       this.setState({ requestFromUser })
       return json;
+    } catch (err) {
+      console.error(err)
+    }
+  }
+  fetchFriends = async () => {
+    try {
+      const url = process.env.REACT_APP_API_URL + 'api/v1/users/friends';
+      const res = await fetch(url, {
+        credentials: 'include'
+      });
+      const json = await res.json();
+      const friendList = json.data.map(user => user.id)
+      this.setState({ friendList })
     } catch (err) {
       console.error(err)
     }
@@ -83,11 +98,15 @@ export default class SearchUser extends Component {
             <List.Header>{result.username}</List.Header>
             <List.Description>{result.email}</List.Description>
             { 
+              this.state.friendList.includes(result.id)
+              ||
+              (
               this.state.requestFromUser.includes(result.id)
               ?
               <Button content="Pending" active={false} floated='right'/>
               :
               <Button content="Add Friend" floated="right" onClick={ () => this.sendRequest(result.id) }/>
+              )
             }
           </List.Content>
         </List.Item>

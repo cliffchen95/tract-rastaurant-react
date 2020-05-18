@@ -48,6 +48,7 @@ export default class MenuExampleTabularOnLeft extends Component {
             />
             <Menu.Item
               name='log out'
+              onClick={this.props.logout}
             />
 
           </Menu>

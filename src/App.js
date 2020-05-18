@@ -97,6 +97,7 @@ class App extends Component {
             <Content 
               user={this.state.user}
               updateUser={this.updateUser}
+              logout={this.logout}
             />
             <NotificationTab />
           </React.Fragment>
