@@ -100,7 +100,7 @@ export default class LoginRegisterForm extends Component {
           />
         </Form.Field>
         <Button type='submit' icon='sign-in' content='Log in' floated='right' color="blue"/>
-        <p>Does not have an account? <a onClick={this.onClick}>Register!</a></p>
+        <p>Do not have an account? <a onClick={this.onClick}>Register!</a></p>
       </Form>
     )
     const RegisterForm = (
@@ -149,7 +149,7 @@ export default class LoginRegisterForm extends Component {
           <SearchCity changeCity={this.changeCity}/>
         </Form.Field>
         <Button type='submit' icon='signup' content='Register' floated='right' color="green"/>
-        <p>Already has an account? <a onClick={this.onClick}>Log in!</a></p>
+        <p>Already have an account? <a onClick={this.onClick}>Log in!</a></p>
       </Form>
     )
     const message = (
@@ -163,10 +163,10 @@ export default class LoginRegisterForm extends Component {
           <Grid.Column width={11}>
             <div className="info">
               <p>
-                Tired of going through list of restaurants just to find something for dinner that everyone agrees with? Want to find a way to tell your secret crush where to take you to dates? Or want to surpirse your other half with a dinner date but didn't want to make it too obvious?
+                Tired of going through lists of restaurants just to find a dinner choice everyone agrees on? Want to find a way to tell your secret crush where to take you on dates? Or want to surprise your other half with a dinner date without being too obvious?
               </p> 
               <p>
-                Try out RestaurantFinder! In this app, you will be able to browse through restaurants like tinder and see what restaurants your friends like and what restaurants you both like.
+                Try out RestaurantFinder! In this app, you will be able to browse through restaurants like Tinder. You can also view what restaurants your friends like, and find common favorites!
               </p>
             </div>
           </Grid.Column>
