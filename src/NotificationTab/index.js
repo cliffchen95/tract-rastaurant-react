@@ -41,7 +41,7 @@ export default class NotificationTab extends Component {
       position: "-webkit-sticky",
       position: "sticky",
       bottom: '0px',
-      width: '40vw'
+      width: '30vw'
     }
     return (
       <div style={style} onClick={this.onClick} >

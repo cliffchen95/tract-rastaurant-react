@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { Image, Header } from 'semantic-ui-react';
 
 export default class Title extends Component {
   constructor() {
@@ -7,10 +7,15 @@ export default class Title extends Component {
   }
 
   render() {
+    const style = {
+      fontFamily: "'Bad Script', cursive",
+      textAlign: 'center',
+      fontSize: '2.5em'
+    }
     return(
-      <div style={{paddingTop: '10px'}}>
-        <h1 className="title">RestaurantFinder</h1>
-      </div>
+      <Header as='h1' style={style}>
+        <Image circular bordered src='https://filacoahuila.com/wp-content/uploads/2019/11/fried-chicken-or-turkey-icon-cartoon-style-Chicken-Turkey-Fried-PNG-and-Vector-has-pretty.jpg' /> RestaurantFinder
+      </Header>
     );
   }
 }
