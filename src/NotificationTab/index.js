@@ -41,11 +41,11 @@ export default class NotificationTab extends Component {
       position: "-webkit-sticky",
       position: "sticky",
       bottom: '0px',
-      width: 'auto'
+      width: '40vw'
     }
     return (
       <div style={style} onClick={this.onClick} >
-        Notification
+        Notifications
         { this.state.open && <NotificationList requests={this.state.requestsTo} removeRequest={this.removeRequest} />}
       </div>
     )

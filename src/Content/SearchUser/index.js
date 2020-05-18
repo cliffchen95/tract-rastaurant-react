@@ -93,21 +93,23 @@ export default class SearchUser extends Component {
     const results = this.state.results.map((result, key) => {
       return (
         <List.Item key={key}>
-          <List.Icon name='user' size='large' verticalAlign='middle' />
-          <List.Content>
-            <List.Header>{result.username}</List.Header>
-            <List.Description>{result.email}</List.Description>
+          <List.Content floated='right' verticalAlign='middle'>
             { 
               this.state.friendList.includes(result.id)
               ||
               (
               this.state.requestFromUser.includes(result.id)
               ?
-              <Button content="Pending" active={false} floated='right'/>
+              <Button content="Pending" active={false} floated='right' primary/>
               :
-              <Button content="Add Friend" floated="right" onClick={ () => this.sendRequest(result.id) }/>
+              <Button content="Add Friend" floated="right" secondary onClick={ () => this.sendRequest(result.id) }/>
               )
             }
+          </List.Content>
+          <List.Icon name='user' size='large' verticalAlign='middle' />
+          <List.Content verticalAlign='middle'>
+            <List.Header>{result.username}</List.Header>
+            <List.Description>{result.email}</List.Description>
           </List.Content>
         </List.Item>
       )
@@ -121,7 +123,7 @@ export default class SearchUser extends Component {
           loading={this.state.loading}
           fluid
         />
-        <List>{results}</List>
+        <List verticalAlign='middle' divided relaxed>{results}</List>
       </Segment>
     )
   }

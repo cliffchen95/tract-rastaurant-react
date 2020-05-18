@@ -33,7 +33,7 @@ export default class RestaurantCardGroup extends Component {
   render() {
     const moreThanSix = this.props.restaurants.length > 6;
     const restaurants = (moreThanSix && !this.state.showMore) ? this.props.restaurants.slice(0, 6) : this.props.restaurants;
-
+    const color = this.state.editToggle ? "blue" : "green";
     const cardItems = restaurants.map((restaurant, key) => {
       return <RestaurantCard 
         restaurant={restaurant} 
@@ -45,7 +45,7 @@ export default class RestaurantCardGroup extends Component {
     return(
       <Segment>
         <h3>{this.props.city}</h3>
-        <Button content="Toggle Edit" onClick={this.toggleEdit} color='purple'/>
+        <Button content="Toggle Edit" onClick={this.toggleEdit} color={color}/>
         <Card.Group itemsPerRow={3}>
           {cardItems}
         </Card.Group>

@@ -88,6 +88,7 @@ export default class FriendList extends Component {
       />
     })
     const mutual = showMutual ? "Showing Mutual Likes" : "Showing All Likes";
+    const color = showMutual ? "blue" : "green";
     const moreThanSix = showMutual ? mutualItems.length > 5 : allItems.length > 5;
     const all = showAll ? "show less" : "...more";
     const options = (
@@ -101,7 +102,7 @@ export default class FriendList extends Component {
     return(
       <Segment>
         <h3>{this.props.friend.username}</h3>
-        <Button secondary content={mutual} onClick={this.toggleMutual}/>
+        <Button color={color} content={mutual} onClick={this.toggleMutual}/>
         <Dropdown floated='right' options={options} value={this.state.selectedCity} onChange={this.changeCity}/>
         <h4>{this.state.selectedCity}</h4>
         <Card.Group itemsPerRow={3}>

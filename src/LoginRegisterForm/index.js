@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Button, Header, Message } from 'semantic-ui-react';
+import { Form, Button, Header, Message, Grid } from 'semantic-ui-react';
 import SearchCity from './SearchCity';
 
 export default class LoginRegisterForm extends Component {
@@ -79,7 +79,7 @@ export default class LoginRegisterForm extends Component {
   }
   render() {
     const LoginForm = (
-      <Form onSubmit={this.onLogin} >
+      <Form onSubmit={this.onLogin}>
         <Form.Field>
           <label>Username</label>
           <input 
@@ -159,8 +159,22 @@ export default class LoginRegisterForm extends Component {
     )
     return(
       <div className="login-register-form" >
-        {this.state.register ? RegisterForm : LoginForm}
-        {this.state.warning && message}
+        <Grid columns={2} divided stretched>
+          <Grid.Column width={11}>
+            <div className="info">
+              <p>
+                Tired of going through list of restaurants just to find something for dinner that everyone agrees with? Want to find a way to tell your secret crush where to take you to dates? Or want to surpirse your other half with a dinner date but didn't want to make it too obvious?
+              </p> 
+              <p>
+                Try out RestaurantFinder! In this app, you will be able to browse through restaurants like tinder and see what restaurants your friends like and what restaurants you both like.
+              </p>
+            </div>
+          </Grid.Column>
+          <Grid.Column width={5}>
+            {this.state.register ? RegisterForm : LoginForm}
+            {this.state.warning && message}
+          </Grid.Column>
+        </Grid>
       </div>
     );
   }

@@ -86,7 +86,7 @@ class App extends Component {
   }
   render() {
     const information = (
-      <div>this is some information of the app</div>
+      <div className="info">Tired of going through list of restaurants just to find something for dinner that everyone agrees with? Want to find a way to tell your secret crush where to take you to dates? Or want to surpirse your other half with a dinner date but didn't want to make it too obvious? Try out RestaurantFinder! In this app, you will be able to browse through restaurants like tinder and see what restaurants your friends like and what restaurants you both like.</div>
     )
     return (
       <div className="App">
@@ -109,7 +109,6 @@ class App extends Component {
             login={this.login}
             logout={this.logout}
             />
-            {information}
           </React.Fragment>
         }
         
